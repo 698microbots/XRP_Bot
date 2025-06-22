@@ -2,6 +2,8 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
+// Note that creating a new subsystem also creates a new ReflectanceSensor object, so only make 1 subsystem when it is put in RobotContainer
+
 package frc.robot.subsystems;
 
 
