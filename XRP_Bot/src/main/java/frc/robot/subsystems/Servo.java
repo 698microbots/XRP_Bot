@@ -7,11 +7,11 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.xrp.XRPServo;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Arm extends SubsystemBase {
+public class Servo extends SubsystemBase {
   private final XRPServo m_armServo;
 
   /** Creates a new Arm. */
-  public Arm() {
+  public Servo() {
     // Device number 4 maps to the physical Servo 1 port on the XRP
     m_armServo = new XRPServo(4);
   }
