@@ -64,7 +64,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    m_robotContainer.getAutonomousCommand();
+  }
 
   @Override
   public void teleopInit() {
@@ -79,7 +81,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    m_robotContainer.getArcadeDriveCommand();
+  }
 
   @Override
   public void testInit() {
@@ -89,7 +93,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+    System.out.println(m_robotContainer.rf.getDistance());
+  }
 
   /** This function is called once when the robot is first started up. */
   @Override

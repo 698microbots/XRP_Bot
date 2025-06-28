@@ -30,7 +30,9 @@ public class followWall extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    dt.arcadeDrive(1, 0);
+    while (rf.getDistance() > 7) {
+      dt.arcadeDrive(-1, 0);
+    }
   }
 
   // Called once the command ends or is interrupted.
@@ -42,6 +44,6 @@ public class followWall extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return rf.getDistance() < 3;
+    return false;
   }
 }

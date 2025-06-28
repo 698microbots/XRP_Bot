@@ -10,8 +10,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.AutonomousDistance;
 import frc.robot.commands.AutonomousTime;
+import frc.robot.commands.followWall;
 import frc.robot.subsystems.Servo;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.RangeFinder;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.xrp.XRPOnBoardIO;
@@ -30,6 +32,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Drivetrain m_drivetrain = new Drivetrain();
+  protected final RangeFinder rf = new RangeFinder();
   private final XRPOnBoardIO m_onboardIO = new XRPOnBoardIO();
   private final Servo m_arm = new Servo();
 
@@ -84,7 +87,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return m_chooser.getSelected();
+    return new followWall(rf, m_drivetrain);
   }
 
   /**
