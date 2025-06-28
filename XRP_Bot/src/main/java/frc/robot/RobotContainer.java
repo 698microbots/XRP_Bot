@@ -7,11 +7,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.TurnDegrees;
+import frc.robot.commands.DriveDistance;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.AutonomousDistance;
 import frc.robot.commands.AutonomousTime;
 import frc.robot.subsystems.Servo;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.RangeFinder;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.xrp.XRPOnBoardIO;
@@ -32,6 +35,8 @@ public class RobotContainer {
   private final Drivetrain m_drivetrain = new Drivetrain();
   private final XRPOnBoardIO m_onboardIO = new XRPOnBoardIO();
   private final Servo m_arm = new Servo();
+  private final RangeFinder rf = new RangeFinder();
+
 
   // Assumes a gamepad plugged into channel 0
   private final Joystick m_controller = new Joystick(0);
@@ -84,7 +89,11 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return m_chooser.getSelected();
+    while (rf.getDistance() < 8)
+    {
+      return new DriveDistance(1, 0.5, m_drivetrain);
+    }
+    return new TurnDegrees(1, 90, m_drivetrain);
   }
 
   /**
