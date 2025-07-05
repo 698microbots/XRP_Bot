@@ -31,13 +31,14 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final Drivetrain m_drivetrain = new Drivetrain();
+  protected final Drivetrain m_drivetrain = new Drivetrain();
   protected final RangeFinder rf = new RangeFinder();
   private final XRPOnBoardIO m_onboardIO = new XRPOnBoardIO();
   private final Servo m_arm = new Servo();
 
   // Assumes a gamepad plugged into channel 0
-  private final Joystick m_controller = new Joystick(0);
+  protected final XboxController m_controller = new XboxController(0);
+
 
   // Create SmartDashboard chooser for autonomous routines
   private final SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -97,6 +98,6 @@ public class RobotContainer {
    */
   public Command getArcadeDriveCommand() {
     return new ArcadeDrive(
-        m_drivetrain, () -> -m_controller.getRawAxis(1), () -> -m_controller.getRawAxis(2));
+        m_drivetrain, () -> -m_controller.getLeftY(), () -> -m_controller.getRightX());
   }
 }
