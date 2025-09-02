@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.xrp.XRPGyro;
 import edu.wpi.first.wpilibj.xrp.XRPMotor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Drivetrain extends SubsystemBase {
+public class XRPDrivetrain extends SubsystemBase {
   private static final double kGearRatio =
       (30.0 / 14.0) * (28.0 / 16.0) * (36.0 / 9.0) * (26.0 / 8.0); // 48.75:1
   private static final double kCountsPerMotorShaftRev = 12.0;
@@ -40,7 +40,7 @@ public class Drivetrain extends SubsystemBase {
   private final BuiltInAccelerometer m_accelerometer = new BuiltInAccelerometer();
 
   /** Creates a new Drivetrain. */
-  public Drivetrain() {
+  public XRPDrivetrain() {
     SendableRegistry.addChild(m_diffDrive, m_leftMotor);
     SendableRegistry.addChild(m_diffDrive, m_rightMotor);
 

@@ -4,7 +4,7 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.XRPDrivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /*
@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class TurnTime extends Command {
   private final double m_duration;
   private final double m_rotationalSpeed;
-  private final Drivetrain m_drive;
+  private final XRPDrivetrain m_drive;
   private long m_startTime;
 
   /**
@@ -24,7 +24,7 @@ public class TurnTime extends Command {
    * @param time How much time to turn in seconds
    * @param drive The drive subsystem on which this command will run
    */
-  public TurnTime(double speed, double time, Drivetrain drive) {
+  public TurnTime(double speed, double time, XRPDrivetrain drive) {
     m_rotationalSpeed = speed;
     m_duration = time * 1000;
     m_drive = drive;
