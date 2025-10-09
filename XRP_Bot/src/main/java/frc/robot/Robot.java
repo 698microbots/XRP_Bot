@@ -17,6 +17,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private final RobotContainer m_robotContainer;
+  double rfDistance;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -26,6 +27,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    rfDistance = m_robotContainer.rf.getDistance();
   }
 
   /**
@@ -42,6 +44,7 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+    rfDistance = m_robotContainer.rf.getDistance();
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
@@ -65,7 +68,9 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    m_robotContainer.getAutonomousCommand();
+    if (rfDistance > 7) {
+      m_robotContainer.getAutonomousCommand();
+    }
   }
 
   @Override
