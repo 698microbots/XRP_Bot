@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.AutonomousDistance;
 import frc.robot.commands.AutonomousTime;
+import frc.robot.commands.DriveDistance;
 import frc.robot.commands.followWall;
 import frc.robot.subsystems.Servo;
 import frc.robot.subsystems.Drivetrain;
@@ -88,7 +89,11 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new followWall(rf, m_drivetrain);
+    if (rf.getDistance() > 7) {
+      return new DriveDistance(1, 1, m_drivetrain);
+    } else {
+      return new DriveDistance(0, 0, m_drivetrain);
+    }
   }
 
   /**
