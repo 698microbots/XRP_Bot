@@ -60,7 +60,7 @@ public class Robot extends TimedRobot {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
+    if (m_autonomousCommand != null && rfDistance > 7) {
       m_autonomousCommand.schedule();
     }
   }
@@ -68,9 +68,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    if (rfDistance > 7) {
-      m_robotContainer.getAutonomousCommand();
-    }
+
   }
 
   @Override
