@@ -89,7 +89,10 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new DriveDistance(1, 1, m_drivetrain);
+    if (rf.getDistance() > 7) {
+      return new DriveDistance(1, 0.5, m_drivetrain);
+    }
+    return new DriveDistance(0, 0, m_drivetrain);
   }
 
   /**

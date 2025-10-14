@@ -68,9 +68,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    if (rfDistance > 7) {
-      m_autonomousCommand.cancel();
-    }
+    System.out.println(rfDistance);
   }
 
   @Override
