@@ -6,8 +6,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import frc.robot.commands.DriveDistance;
 //import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.DriveTrainCmd;
+import frc.robot.commands.GetDistance;
+import frc.robot.commands.followWall;
+import frc.robot.subsystems.RangeFinder;
 import frc.robot.subsystems.XRPDrivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -24,6 +28,7 @@ public class RobotContainer {
   private final CommandXboxController xboxController = new CommandXboxController(0);
   //private final ExampleCommand m_autoCommand = new ExampleCommand(drivetrain);
   private final SendableChooser<Command> m_chooser = new SendableChooser<>();
+  private final RangeFinder rf = new RangeFinder();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -55,8 +60,12 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     //return m_autoCommand;
     //return driveTrainCmd;
+    //return new GetDistance(rf);
+    return new followWall(rf, drivetrain);
+    //return new DriveDistance(.6, 2.0, drivetrain);
+    
 
-    return m_chooser.getSelected();
+    //return m_chooser.getSelected();
     
   }
 }
